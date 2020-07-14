@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Node.gd" type="Script" id=1]
+[ext_resource path="res://Camera.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.0823529, 0.607843, 0.894118, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.0705882, 0.647059, 0.901961, 1 )
+
+[sub_resource type="CubeMesh" id=4]
+material = SubResource( 3 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.219608, 0.831373, 0.0901961, 1 )
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.0784314, 0.458824, 0.905882, 1 )
+
+[node name="Node" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Object_1" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="ImmediateGeometry" type="ImmediateGeometry" parent="Object_1"]
+
+[node name="Object_2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -1 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="ImmediateGeometry" type="ImmediateGeometry" parent="Object_2"]
+
+[node name="1" type="CSGPolygon" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1 )
+visible = false
+material = SubResource( 5 )
+
+[node name="2" type="CSGPolygon" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25 )
+visible = false
+polygon = PoolVector2Array( 0, 0, 0.184028, 0.928774, 1.45389, 1.20569, 1.23874, 0.365805 )
+material = SubResource( 6 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.927973, 0.372648, 0, -0.372648, 0.927973, 0, 2, 4 )
+fov = 56.4269
+far = 50.0
+script = ExtResource( 2 )
